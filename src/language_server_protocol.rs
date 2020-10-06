@@ -1216,6 +1216,7 @@ impl LanguageClient {
                         }),
                         signature_help: Some(SignatureHelpCapability {
                             signature_information: Some(SignatureInformationSettings {
+                                active_parameter_support: None,
                                 documentation_format: preferred_markup_kind.clone(),
                                 parameter_information: Some(ParameterInformationSettings {
                                     label_offset_support: Some(true),
@@ -2336,6 +2337,7 @@ impl LanguageClient {
         self.get_client(&Some(language_id))?.notify(
             lsp_types::notification::DidSaveTextDocument::METHOD,
             DidSaveTextDocumentParams {
+                text: None,
                 text_document: TextDocumentIdentifier { uri },
             },
         )?;
